@@ -1,5 +1,7 @@
 #---- Video files
 *.mp4
+*.mov
+*.qt
 
 #---- R Project Files
 # History files
