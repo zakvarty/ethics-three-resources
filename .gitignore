@@ -3,6 +3,10 @@
 *.mov
 *.qt
 
+#---- Powerpoint files
+*.pptx
+slides/originals-from-chris/
+
 #---- R Project Files
 # History files
 .Rhistory
