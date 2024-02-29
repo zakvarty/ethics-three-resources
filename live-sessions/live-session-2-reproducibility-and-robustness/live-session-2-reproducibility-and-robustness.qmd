@@ -1,0 +1,305 @@
+---
+title: "Live Session 2: <br> Reproducibility and Robustness"
+subtitle: ""
+author: Dr Zak Varty
+editor: source
+format:
+  revealjs:
+    theme: assets/imperial-ethics-theme.scss #(default / dark / simple)
+    logo: assets/ethics-3-logo.jpg
+    bibliography: assets/refs.bib
+    footer: "MLDS Ethics, Part 3 - Zak Varty"
+    menu: true
+    slide-number: true
+    show-slide-number: all # (all / print / speaker)
+    self-contained: true # (set to true before publishing html to web)
+    width: 1600 # default is 1050
+    height: 900 # default is 700
+---
+
+## Welcome!
+
+<br>
+
+### This Session: 
+
+<br>
+
+1. Review of Reproducibility and Robustness (15 mins)
+
+2. Group Discussion (20 mins)
+
+3. Group Feedback (20 mins)
+
+
+# Review of Reproducibility and Robustness
+
+## Reproducibility and Robustness - Concepts
+
+:::{.fragment}
+### Reproducibility 
+
+Can you recreate the results of your analysis in a different setting? 
+
+- _Reproduction:_ Can you create the same results from your data?
+- _Replication:_ Do your findings generalise beyond this data?
+
+:::
+
+:::{.fragment}
+### Robustness 
+
+Are your results stable? 
+
+- _Statistical aspects:_ stability with respect to violated assumptions, different samples from the same distribution, moderate differences in prior beliefs, ...
+- _Computational aspects:_ stability with respect to different starting points, random seeds, bad inputs, malicious inputs.
+
+:::
+
+## Reproducibility and Robustness - Workflows and Tools 
+
+::::{.columns}
+:::{.column width="60%"}
+:::{.fragment}
+### Workflows
+
+- Waterfall vs Agile
+- MVP, CI and CD
+- Difficulties from lack of modularity
+:::
+
+:::{.fragment}
+[Tracer Bullets](https://www.youtube.com/watch?v=vNZY0zhg3Do) by Caitlin Hudon 
+
+[Simplest Possible Thing](https://www.youtube.com/watch?v=MW9oVxjJHEw) by Joel Grus 
+:::
+
+:::{.fragment}
+### Tools
+
+- Notebook < Script < Pipeline < Config 
+- MLFlow, Kedro and friends for tracking experiments.
+
+:::
+:::
+:::{.column width="5%"}
+:::
+:::{.column width="35%"}
+
+```{r}
+#| out-width: "80%"
+knitr::include_graphics("images/waterfall.png",)
+knitr::include_graphics("images/agile.png")
+```
+
+:::
+::::
+
+## Reproducibility and Robustness - Determinism and Stability
+
+<br>
+
+> _Determinism:_ Does the same inputs imply the same outputs? 
+> 
+> _Stability:_ Does $x + \delta$ imply $y + \epsilon$?
+>
+> **Neither concept is stronger than the other.**
+
+. . .
+
+```{r}
+countdown::countdown(1.5)
+```
+
+**Task:** Can you think of examples where:
+
+1. Determinism $\;\not\!\!\!\implies$ Stability 
+  
+2. Stability $\;\not\!\!\!\implies$ Determinism
+
+. . . 
+
+- High leverage points, Simulated annealing and other Monte Carlo Methods
+
+
+## Reproducibility and Robustness - In Production 
+
+:::{.fragment}
+### Computational Worries 
+
+:::{.incremental}
+- _Input stability:_ Failing gracefully and defending against malicious inputs.
+- _Computing environment:_ Differences in hardware, architecture, OS, language, packages.
+- _Scaling:_ distributed computing requires careful handling (parallel or federated).
+:::
+:::
+
+<br>
+
+:::{.fragment}
+### Statistical Worries
+
+Largest concerns are usually related to changes in distribution. These come in many forms: 
+
+:::{.incremental}
+- _Sample to population:_ Shadow deployment and AB testing
+- _Data drift:_ Change in marginal distributions $\pi(x)$ or $\pi(y)$ 
+- _Concept drift:_ Change in conditional distribution $\pi(y|x)$ or copula.
+:::
+:::
+
+# Group Discussion 
+
+## Task: Contextual Application
+
+<br>
+
+In breakout rooms, discuss the main concerns you would have with the following data science projects with regard to reproducibility and stability. 
+
+. . . 
+
+<br>
+
+_Reproducibility, Robustness, Workflows, Determinism, Stability, Productionizing_
+
+<br>
+
+. . .
+
+1. Hierarchical prediction of student grades in districts, schools and classes.
+2. Real-time detection of fraudulent bank transactions.
+3. Customer segmentation for playlist recommendations.
+4. Forecasting call volumes to determine ambulance staffing levels. 
+ 
+# Group Feedback 
+
+## Group 1 
+
+```{r}
+countdown::countdown(4)
+```
+
+<br>
+
+_Topic:_ Hierarchical prediction of student grades
+
+<br>
+
+::::{.columns}
+:::{.column width="40%"}
+
+- Reproducibility
+- Robustness
+- Workflows
+- Determinism
+- Stability
+- Productionizing
+
+:::
+:::{.column width="20%"}
+:::
+:::{.column width="40%"}
+> Pick 1 or 2 topics that you thought were mores interesting or relevant to your application.
+>
+> Summarise your discussions on these topics for the rest of the group.
+:::
+::::
+
+## Group 2 
+
+```{r}
+countdown::countdown(4)
+```
+
+<br>
+
+_Topic:_ Fraudulent bank transactions
+
+<br>
+
+::::{.columns}
+:::{.column width="40%"}
+
+- Reproducibility
+- Robustness
+- Workflows
+- Determinism
+- Stability
+- Productionizing
+
+:::
+:::{.column width="20%"}
+:::
+:::{.column width="40%"}
+> Pick 1 or 2 topics that you thought were mores interesting or relevant to your application.
+>
+> Summarise your discussions on these topics for the rest of the group.
+:::
+::::
+
+## Group 3 
+
+```{r}
+countdown::countdown(4)
+```
+
+<br>
+
+_Topic:_ Playlist customer segmentation
+
+<br>
+
+::::{.columns}
+:::{.column width="40%"}
+
+- Reproducibility
+- Robustness
+- Workflows
+- Determinism
+- Stability
+- Productionizing
+
+:::
+:::{.column width="20%"}
+:::
+:::{.column width="40%"}
+> Pick 1 or 2 topics that you thought were mores interesting or relevant to your application.
+>
+> Summarise your discussions on these topics for the rest of the group.
+:::
+::::
+
+## Group 4 
+
+```{r}
+countdown::countdown(4)
+```
+
+<br>
+
+_Topic:_ Forecasting ambulance call volumes
+
+<br>
+
+::::{.columns}
+:::{.column width="40%"}
+
+- Reproducibility
+- Robustness
+- Workflows
+- Determinism
+- Stability
+- Productionizing
+
+:::
+:::{.column width="20%"}
+:::
+:::{.column width="40%"}
+> Pick 1 or 2 topics that you thought were mores interesting or relevant to your application.
+>
+> Summarise your discussions on these topics for the rest of the group.
+:::
+::::
+
+
+# Thank you. Questions?
